@@ -357,12 +357,19 @@ const EVENTOS = [
       .then(()=>{
         fmForm.hidden=true; fmOk.hidden=false;
         var wa=document.getElementById("fmWa");
+        var okMsg=document.getElementById("fmOkMsg");
+        var enIframe=false; try{ enIframe=(window.self!==window.top); }catch(e){ enIframe=true; }
         if(WHATSAPP_SAVANNAH && WHATSAPP_SAVANNAH.trim()!==""){
           wa.href=WHATSAPP_SAVANNAH; wa.style.display="inline-flex";
-          setTimeout(function(){ window.location.href=WHATSAPP_SAVANNAH; }, 3000);
+          if(enIframe){
+            okMsg.textContent="Toca el botón para unirte al grupo de WhatsApp y recibir los detalles.";
+          } else {
+            okMsg.textContent="Únete al grupo de WhatsApp para recibir los detalles. Te llevamos en un momento…";
+            setTimeout(function(){ window.location.href=WHATSAPP_SAVANNAH; }, 3000);
+          }
         } else {
           wa.style.display="none";
-          document.getElementById("fmOkMsg").textContent="Gracias por reservar tu lugar. Te contactaremos pronto por WhatsApp con los detalles.";
+          okMsg.textContent="Gracias por reservar tu lugar. Te contactaremos pronto por WhatsApp con los detalles.";
         }
       })
       .catch(()=>{ btn.disabled=false; btn.innerHTML=prev; fmMsg.textContent="No se pudo enviar. Revisa tu conexión e inténtalo de nuevo."; fmMsg.classList.add("err"); });
