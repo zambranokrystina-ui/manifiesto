@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colaboraciones | Manifiesto Abundancia</title>
+<meta name="description" content="Cuéntame sobre tu proyecto y lo que ofreces para una colaboración con Manifiesto Abundancia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --olive: #A9AD7E; --olive-deep: #7D8259; --brown: #5E4B3C; --brown-soft: #85725F; --clay: #C98E70; --clay-dark: #AD7858; --gold: #D8BB80; --cream: #FBF8F2; --sand: #F3EDE1; --white: #FFFCF6; --error: #9B2D20; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Inter", system-ui, sans-serif; background: var(--cream); color: var(--brown); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  h1, h2 { font-family: "Fraunces", Georgia, serif; font-weight: 600; line-height: 1.15; }
+  header { background: var(--brown); color: var(--cream); padding: 56px 24px 70px; text-align: center; }
+  header .eyebrow { font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  header h1 { font-size: clamp(2rem, 5vw, 2.9rem); margin: 12px auto 12px; max-width: 640px; }
+  header h1 span { color: var(--gold); font-style: italic; }
+  header p { color: rgba(246,240,228,.82); max-width: 560px; margin: 0 auto; }
+  main { max-width: 640px; margin: -40px auto 0; padding: 0 20px 60px; position: relative; }
+  form, #thanks { background: var(--white); border-radius: 16px; padding: 34px 30px; box-shadow: 0 12px 30px rgba(62,44,30,.12); }
+  fieldset { border: none; margin-bottom: 26px; }
+  legend { font-family: "Fraunces", Georgia, serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 12px; padding: 0; }
+  label.field { display: block; font-size: .9rem; font-weight: 500; margin-bottom: 16px; }
+  .req { color: var(--clay-dark); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  input[type=text], input[type=email], input[type=tel], input[type=url], select, textarea { display: block; width: 100%; margin-top: 6px; padding: 12px 14px; border: 1.5px solid #d8cdb8; border-radius: 10px; background: #fff; font: inherit; color: var(--brown); }
+  textarea { min-height: 90px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--clay); box-shadow: 0 0 0 3px rgba(181,112,79,.18); }
+  .choices { display: grid; gap: 8px; }
+  .choices label { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1.5px solid #d8cdb8; border-radius: 10px; cursor: pointer; font-size: .93rem; background: #fff; }
+  .choices label:has(input:checked) { border-color: var(--olive-deep); background: var(--sand); }
+  .choices input { accent-color: var(--olive-deep); width: 16px; height: 16px; }
+  .btn { display: block; width: 100%; background: var(--clay); color: var(--white); border: none; font: inherit; font-weight: 600; font-size: 1rem; padding: 15px; border-radius: 999px; cursor: pointer; transition: background .2s ease; }
+  .btn:hover { background: var(--clay-dark); }
+  .btn:disabled { opacity: .6; cursor: wait; }
+  .msg-error { color: var(--error); font-size: .9rem; margin-top: 12px; display: none; }
+  .note { font-size: .8rem; color: var(--brown-soft); margin-top: 14px; text-align: center; }
+  #thanks { display: none; text-align: center; }
+  #thanks h2 { font-size: 1.8rem; margin-bottom: 10px; }
+  #thanks p { color: var(--brown-soft); margin-bottom: 22px; }
+  .btn-link { display: inline-block; background: var(--olive-deep); color: var(--white); text-decoration: none; padding: 12px 22px; border-radius: 999px; font-weight: 600; }
+  footer { text-align: center; color: var(--brown-soft); font-size: .82rem; padding: 0 20px 36px; }
+  @media (max-width: 520px) { form { padding: 26px 20px; } .row { grid-template-columns: 1fr; } }
+  .wa-float { position: fixed; right: 20px; bottom: 20px; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 8px 20px rgba(62,44,30,.25); z-index: 999; transition: transform .2s ease; }
+  .wa-float:hover { transform: scale(1.06); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="eyebrow">Manifiesto Abundancia</span>
+  <h1>Hagamos algo <span>juntas</span></h1>
+  <p>Cuéntame sobre tu proyecto, qué buscas y qué puedes ofrecer. Así sabemos si la colaboración tiene sentido para las dos.</p>
+</header>
+
+<main>
+  <form id="collabForm" novalidate>
+
+    <fieldset>
+      <legend>Sobre ti y tu marca</legend>
+      <label class="field">Nombre completo <span class="req">*</span>
+        <input type="text" name="nombre" required autocomplete="name">
+      </label>
+      <label class="field">Nombre de tu marca, empresa o proyecto <span class="req">*</span>
+        <input type="text" name="marca" required>
+      </label>
+      <label class="field">Enlace de tu web o redes <span class="req">*</span>
+        <input type="url" name="web" required placeholder="https://">
+      </label>
+      <div class="row">
+        <label class="field">Correo electrónico <span class="req">*</span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label class="field">WhatsApp <span class="req">*</span>
+          <input type="tel" name="whatsapp" required autocomplete="tel">
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>¿Qué tipo de colaboración buscas?</legend>
+      <div class="choices">
+        <label><input type="checkbox" name="tipo" value="Contenido conjunto"> Contenido conjunto (lives, reels, publicaciones)</label>
+        <label><input type="checkbox" name="tipo" value="Evento o taller"> Evento o taller</label>
+        <label><input type="checkbox" name="tipo" value="Patrocinio o canje"> Patrocinio o canje</label>
+        <label><input type="checkbox" name="tipo" value="Servicio de marketing o edición"> Servicio de marketing o edición</label>
+        <label><input type="checkbox" name="tipo" value="Programa de afiliados"> Programa de afiliados</label>
+        <label><input type="checkbox" name="tipo" value="Otro"> Otro</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Lo que buscas</legend>
+      <label class="field">¿Qué resultado esperas de esta colaboración? <span class="req">*</span>
+        <textarea name="busca" required></textarea>
+      </label>
+      <label class="field">¿Para cuándo lo necesitas?
+        <select name="cuando">
+          <option value="">Selecciona una opción</option>
+          <option>Lo antes posible</option>
+          <option>En el próximo mes</option>
+          <option>En los próximos 2 o 3 meses</option>
+          <option>Todavía no tengo fecha</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Lo que ofreces</legend>
+      <label class="field">¿Qué ofreces a cambio o como parte de la colaboración? <span class="req">*</span>
+        <textarea name="ofrece" required placeholder="Audiencia, productos, servicios, pagos, visibilidad, etc."></textarea>
+      </label>
+      <label class="field">Tamaño aproximado de tu audiencia
+        <select name="audiencia">
+          <option value="">Selecciona una opción</option>
+          <option>Menos de 1,000 seguidores</option>
+          <option>1,000 a 5,000</option>
+          <option>5,000 a 20,000</option>
+          <option>Más de 20,000</option>
+          <option>No aplica</option>
+        </select>
+      </label>
+      <label class="field">Presupuesto disponible, si aplica
+        <select name="presupuesto">
+          <option value="">Prefiero hablarlo después</option>
+          <option>Menos de $300</option>
+          <option>$300 a $800</option>
+          <option>Más de $800</option>
+          <option>Colaboración sin pago (canje)</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Algo más</legend>
+      <label class="field">Cuéntame cualquier detalle adicional
+        <textarea name="notas"></textarea>
+      </label>
+    </fieldset>
+
+    <button class="btn" type="submit" id="submitBtn">Enviar propuesta</button>
+    <p class="msg-error" id="errorMsg">Revisa los campos marcados con * e inténtalo de nuevo.</p>
+    <p class="note">Reviso cada propuesta y te respondo por correo o WhatsApp.</p>
+  </form>
+
+  <section id="thanks">
+    <h2>¡Gracias por tu propuesta!</h2>
+    <p>La reviso y te escribo para platicar si podemos colaborar.</p>
+    <a class="btn-link" href="index.html">Volver a los servicios</a>
+  </section>
+</main>
+
+<footer>Diseño y desarrollo por Mercadeo MRR LLC</footer>
+
+<script>
+  // CAMBIAR: URL de la Web App de Google Apps Script
+  const SCRIPT_URL = "#REEMPLAZAR_APPS_SCRIPT_URL";
+
+  const form = document.getElementById("collabForm");
+  const btn = document.getElementById("submitBtn");
+  const err = document.getElementById("errorMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      err.style.display = "block";
+      form.reportValidity();
+      return;
+    }
+    err.style.display = "none";
+    btn.disabled = true;
+    btn.textContent = "Enviando...";
+
+    const data = new FormData(form);
+    const tipos = data.getAll("tipo").join(", ");
+    data.delete("tipo");
+    data.append("tipos", tipos);
+    data.append("formulario", "colaboracion");
+    data.append("fecha", new Date().toLocaleString("es-US", { timeZone: "America/Chicago" }));
+
+    try {
+      await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: data });
+      form.style.display = "none";
+      document.getElementById("thanks").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (_) {
+      btn.disabled = false;
+      btn.textContent = "Enviar propuesta";
+      err.textContent = "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.";
+      err.style.display = "block";
+    }
+  });
+</script>
+<a class="wa-float" href="https://wa.me/19197715951" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.6 2.6 0 0 0-.8 2 4.5 4.5 0 0 0 1 2.4 10.3 10.3 0 0 0 3.9 3.4c1.4.6 2 .6 2.7.5a2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1c-.1-.1-.2-.2-.4-.3z"/></svg></a>
+</body>
+</html>
